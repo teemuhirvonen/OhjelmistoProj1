@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.OhjelmistoProjekti.domain.Question;
 import com.example.OhjelmistoProjekti.domain.QuestionRepository;
 
+
+
 @Controller
 public class OhjelmistoproController {
 	
@@ -30,5 +32,12 @@ public class OhjelmistoproController {
 	    public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long questionId) {	
 	    	return repository.findById(questionId);
 	 }
-
+	 
+	// Save question POST
+	    @RequestMapping(value = "/save", method = RequestMethod.POST)
+	    public String save(Question question){
+	        repository.save(question);
+	        return "redirect:questions";
+	    } 
+	 
 }
