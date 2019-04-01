@@ -10,7 +10,7 @@ public class Question {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public long Id;
+	public long id;
 	private String question, answer;
 	
 	public Question() {
@@ -22,11 +22,11 @@ public class Question {
 	}
 
 	public long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getQuestion() {
@@ -47,7 +47,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [Id=" + Id + ", question=" + question + "]";
+		return "Question [id=" + id + ", question=" + question + "]";
 	}
 	
 }
