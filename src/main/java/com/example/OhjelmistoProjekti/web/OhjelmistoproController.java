@@ -28,9 +28,9 @@ public class OhjelmistoproController {
 	}
 	 
 	// Save question POST
-	    @RequestMapping(value = "/questions", method = RequestMethod.POST)
+	    @RequestMapping(value = "/questions", method=RequestMethod.POST)
 	    public String save(Question question){
-	        repository.save(question);
+	        repository.saveAll(question.answer);
 	        return "redirect:questions";
 	    } 
 	 

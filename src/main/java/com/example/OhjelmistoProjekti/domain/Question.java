@@ -11,7 +11,8 @@ public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long id;
-	private String question, answer;
+	private String question;
+	public String answer;
 	
 	public Question() {
 		
