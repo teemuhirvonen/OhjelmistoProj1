@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,9 +30,12 @@ public class OhjelmistoproController {
 	 
 	// Save question POST
 	    @RequestMapping(value = "/questions", method=RequestMethod.POST)
-	    public String save(Question question){
-	        repository.saveAll(question.answer);
-	        return "redirect:questions";
-	    } 
+	    public @ResponseBody List<Question> addNewAnswer(@RequestBody Question question){
+	        return (List<Question>) repository.save(question);
+	    }
+	
+	    
+	    
+	    
 	 
 }
