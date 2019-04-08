@@ -28,7 +28,7 @@ public class OhjelmistoproController {
 	}
 	
 	//RESTful service show question by id
-	 @RequestMapping(value="/question/{id}", method = RequestMethod.GET)
+	 @RequestMapping(value="/questions/{id}", method = RequestMethod.GET)
 	    public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long questionId) {	
 	    	return repository.findById(questionId);
 	 }
