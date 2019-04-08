@@ -18,7 +18,7 @@ public class Answer {
 	
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="questionid")
+	@JoinColumn(name="id")
 	private Question question;
 	
 	public Answer(){}

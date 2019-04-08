@@ -28,34 +28,34 @@ public class OhjelmistoProjektiApplication {
 			arepository.save(new Answer ("Marvel App"));
 			arepository.save(new Answer ("Photoshop"));
 			arepository.save(new Answer ("Intensiivikurssi"));
-			arepository.save(new Answer ("En"));
+			arepository.save(new Answer ("En", repository.findByQuestion("1. Sukupuoli?").get(0)));
 			
 			
-			Question question = new Question("1. Sukupuoli?", arepository.findByAnswer("En").get(0));
+			Question question = new Question("1. Sukupuoli?");
 			repository.save(question);
 			
-			question = new Question("2.Monetta vuotta opiskelet Haaga-Heliassa?", arepository.findByAnswer("2").get(0));
+			question = new Question("2.Monetta vuotta opiskelet Haaga-Heliassa?");
 			repository.save(question);
 			
-			question = new Question("3.Mihin koulutusohjelman linjaan suuntaudut?", arepository.findByAnswer("Ohjelmistotuotanto").get(0));
+			question = new Question("3.Mihin koulutusohjelman linjaan suuntaudut?");
 			repository.save(question);
 			
-			question = new Question("4.Haluaisitko työllistyä UI/UX suunnittelun työtehtäviin?", arepository.findByAnswer("En").get(0));
+			question = new Question("4.Haluaisitko työllistyä UI/UX suunnittelun työtehtäviin?");
 			repository.save(question);
 			
-			question = new Question("5.Onko Haaga-Heliassa mielestäsi tarpeeksi visuaaliseen suunnitteluun ohjaavia kursseja?", arepository.findByAnswer("En osaa sanoa").get(0));
+			question = new Question("5.Onko Haaga-Heliassa mielestäsi tarpeeksi visuaaliseen suunnitteluun ohjaavia kursseja?");
 			repository.save(question);
 			
-			question = new Question("6.Mitä suunnittelutyökaluja olet käyttänyt Haaga-Heliassa?", arepository.findByAnswer("Marvel App").get(0));
+			question = new Question("6.Mitä suunnittelutyökaluja olet käyttänyt Haaga-Heliassa?");
 			repository.save(question);
 			
-			question = new Question("7.Minkä visuaalisten työkalujen opetusta kaipaisit Haaga-Heliaan?", arepository.findByAnswer("Photoshop").get(0));
+			question = new Question("7.Minkä visuaalisten työkalujen opetusta kaipaisit Haaga-Heliaan?");
 			repository.save(question);
 			
-			question = new Question("8.Miten toivoisit työkaluja opetettavan?", arepository.findByAnswer("Intensiivikurssi").get(0));
+			question = new Question("8.Miten toivoisit työkaluja opetettavan?");
 			repository.save(question);
 			
-			question = new Question("9.Oletko suorittanut UX/UI suunnittelu kursseja jonkin muun koulun/palvelun kautta?", arepository.findByAnswer("En").get(0));
+			question = new Question("9.Oletko suorittanut UX/UI suunnittelu kursseja jonkin muun koulun/palvelun kautta?");
 			repository.save(question);
 		};
 	}
