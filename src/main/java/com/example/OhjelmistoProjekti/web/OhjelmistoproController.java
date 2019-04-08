@@ -28,15 +28,6 @@ public class OhjelmistoproController {
 	public @ResponseBody List<Question> questionListRest() {
 		return (List<Question>) repository.findAll();
 	}
-<<<<<<< HEAD
-	
-	//RESTful service show question by id
-	 @RequestMapping(value="/questions/{id}", method = RequestMethod.GET)
-	    public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long questionId) {	
-	    	return repository.findById(questionId);
-	 }
-=======
->>>>>>> c6768655b6078fe360776a19d631da86b80c9807
 	 
 	// Save question POST
 	@RequestMapping(value = "/questions", method=RequestMethod.POST)
