@@ -16,13 +16,12 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long id;
 	private String question;
-<<<<<<< HEAD
+
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
 	private List<Question> questions;
-=======
+
 	public String answer;
->>>>>>> 892e8803ebc5d64aee6bfddc19a7b70a86abab8e
 	
 	public Question() {
 		
