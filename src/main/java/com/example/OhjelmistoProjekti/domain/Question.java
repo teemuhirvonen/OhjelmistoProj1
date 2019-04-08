@@ -1,5 +1,6 @@
 package com.example.OhjelmistoProjekti.domain;
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Question {
 	
@@ -16,8 +18,6 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long id;
 	private String question;
-
-	private Answer answer;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "answer")
 	private List<Answer> answers;
@@ -25,9 +25,8 @@ public class Question {
 	public Question() {
 	}
 	
-	public Question(String question, Answer answer) {
+	public Question(String question) {
 		this.question = question;
-		this.answer = answer;
 	}
 
 	public long getId() {
