@@ -1,6 +1,7 @@
 package com.example.OhjelmistoProjekti.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,12 @@ public class OhjelmistoproController {
 	public @ResponseBody List<Question> questionListRest() {
 		return (List<Question>) repository.findAll();
 	}
-	 
+	
+	@RequestMapping(value="questions/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Question> findQuestionREST(@PathVariable("id") Long questionid){
+		return repository.findById(questionid);
+	} 
+	
 	// Save question POST
 	@RequestMapping(value = "/questions", method=RequestMethod.POST)
 	public @ResponseBody List<Question> addNewAnswer(@RequestBody Question question){
