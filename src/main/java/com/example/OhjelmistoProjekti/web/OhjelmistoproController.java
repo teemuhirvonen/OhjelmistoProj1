@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,18 +28,37 @@ public class OhjelmistoproController {
 	public @ResponseBody List<Question> questionListRest() {
 		return (List<Question>) repository.findAll();
 	}
+<<<<<<< HEAD
 	
 	//RESTful service show question by id
 	 @RequestMapping(value="/questions/{id}", method = RequestMethod.GET)
 	    public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long questionId) {	
 	    	return repository.findById(questionId);
 	 }
+=======
+>>>>>>> 892e8803ebc5d64aee6bfddc19a7b70a86abab8e
 	 
 	// Save question POST
-	    @RequestMapping(value = "/save", method = RequestMethod.POST)
-	    public String save(Question question){
-	        repository.save(question);
-	        return "redirect:questions";
-	    } 
+	    @RequestMapping(value = "/questions", method=RequestMethod.POST)
+	    public @ResponseBody List<Question> addNewAnswer(@RequestBody Question question){
+	        return (List<Question>) repository.save(question);
+	    }
+	
+	    
+	    // Delete Question
+	    @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+		public String poistakysymys(@PathVariable("id") Long questionId, Model model) {
+			repository.deleteById(questionId);
+			return "redirect:../";
+			
+		}
+	    
+	    //näyttää kysymyksen id:n perusteella
+	    @RequestMapping(value = "/Viewquestion/{id}", method = RequestMethod.GET)
+		public String View(@PathVariable("id") Long questiontId, Model model) {
+			model.addAttribute("question", repository.findById(questiontId));
+			return "";
+	    
+	    }
 	 
 }
