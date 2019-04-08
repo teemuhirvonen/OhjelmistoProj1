@@ -16,25 +16,26 @@ public class Question {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public long id;
+	public long questionid;
 	private String question;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "answer")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
 	private List<Answer> answers;
 	
 	public Question() {
 	}
 	
 	public Question(String question) {
+		super();
 		this.question = question;
 	}
 
-	public long getId() {
-		return id;
+	public long getQuestionid() {
+		return questionid;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setQuestionid(long questionid) {
+		this.questionid = questionid;
 	}
 
 	public String getQuestion() {
@@ -55,7 +56,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", question=" + question + "]";
+		return "Question [questionid=" + questionid + ", question=" + question + "]";
 	}
 }
 	

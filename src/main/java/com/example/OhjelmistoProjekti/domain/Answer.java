@@ -13,12 +13,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Answer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long id;
+	public Long answerid;
 	private String answer;
 	
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="id")
+	@JoinColumn(name="questionid")
 	private Question question;
 	
 	public Answer(){}
@@ -33,12 +33,12 @@ public class Answer {
 		this.question = question;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getAnswerid() {
+		return answerid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setAnswerid(Long answerid) {
+		this.answerid = answerid;
 	}
 
 	public String getAnswer() {
@@ -48,19 +48,21 @@ public class Answer {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	
-	public Question getQuestion(){
+
+	public Question getQuestion() {
 		return question;
 	}
-	
-	public void setQuestion(Question question){
+
+	public void setQuestion(Question question) {
 		this.question = question;
 	}
 
 	@Override
 	public String toString() {
-		return "Answer [id=" + id + ", answer=" + answer + ", question="
-				+ question + "]";
+		return "Answer [answerid=" + answerid + ", answer=" + answer
+				+ ", question=" + question + "]";
 	}
+	
+	
 
 }
