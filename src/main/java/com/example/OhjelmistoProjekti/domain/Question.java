@@ -16,20 +16,16 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long id;
 	private String question;
-<<<<<<< HEAD
+	private Answer answer;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
-	private List<Question> questions;
-=======
-	public String answer;
->>>>>>> 892e8803ebc5d64aee6bfddc19a7b70a86abab8e
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "answer")
+	private List<Answer> answers;
+
+	public Question() {}
 	
-	public Question() {
-		
-	}
-	
-	public Question(String question) {
+	public Question(String question, Answer answer) {
 		this.question = question;
+		this.answer = answer;
 	}
 
 	public long getId() {
@@ -48,12 +44,12 @@ public class Question {
 		this.question = question;
 	}
 	
-	public List<Question> getQuestions(){
-		return questions;
+	public List<Answer> getAnswers(){
+		return answers;
 	}
 	
-	public void setQuestions(List<Question> questions){
-		this.questions = questions;
+	public void setAnswers(List<Answer> answers){
+		this.answers = answers;
 	}
 
 	@Override

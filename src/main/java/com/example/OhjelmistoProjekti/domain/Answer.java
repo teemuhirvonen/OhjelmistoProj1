@@ -23,7 +23,11 @@ public class Answer {
 	
 	public Answer(){}
 	
-	public Answer(Long id, String answer, Question question){
+	public Answer(String answer){
+		this.answer = answer;
+	}
+	
+	public Answer(String answer, Question question){
 		super();
 		this.answer = answer;
 		this.question = question;
