@@ -16,12 +16,25 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long id;
 	private String question;
+<<<<<<< HEAD
 	private Answer answer;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "answer")
 	private List<Answer> answers;
 
 	public Question() {}
+=======
+
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+	private List<Question> questions;
+
+	public String answer;
+	
+	public Question() {
+		
+	}
+>>>>>>> c6768655b6078fe360776a19d631da86b80c9807
 	
 	public Question(String question, Answer answer) {
 		this.question = question;
