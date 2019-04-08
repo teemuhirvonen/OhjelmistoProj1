@@ -43,5 +43,13 @@ public class OhjelmistoproController {
 			return "redirect:../";
 			
 		}
+	    
+	    //näyttää kysymyksen id:n perusteella
+	    @RequestMapping(value = "/Viewquestion/{id}", method = RequestMethod.GET)
+		public String View(@PathVariable("id") Long questiontId, Model model) {
+			model.addAttribute("question", repository.findById(questiontId));
+			return "";
+	    
+	    }
 	 
 }
