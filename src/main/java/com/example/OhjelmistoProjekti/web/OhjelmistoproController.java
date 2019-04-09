@@ -19,6 +19,7 @@ import com.example.OhjelmistoProjekti.domain.Question;
 import com.example.OhjelmistoProjekti.domain.QuestionRepository;
 
 
+
 @CrossOrigin
 @Controller
 public class OhjelmistoproController {
@@ -58,7 +59,13 @@ public class OhjelmistoproController {
 		repository.deleteById(questionId);
 		return "redirect:../";	
 	}
-	    
+	
+	// Add new question 
+    @RequestMapping(value = "/add", method=RequestMethod.GET)
+    public String lisaaKysymys(Model model){
+    	model.addAttribute("question", new Question());
+    	return "redirect:../";
+    }   
 
 	 
 }
