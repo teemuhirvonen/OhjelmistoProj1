@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.OhjelmistoProjekti.domain.Answer;
+import com.example.OhjelmistoProjekti.domain.AnswerRepository;
 import com.example.OhjelmistoProjekti.domain.Question;
 import com.example.OhjelmistoProjekti.domain.QuestionRepository;
 
@@ -24,10 +26,19 @@ public class OhjelmistoproController {
 	@Autowired
 	private QuestionRepository repository;
 	
+	@Autowired
+	private AnswerRepository arepository;
+	
 	//RESTful service show all questions
 	@RequestMapping(value="/questions", method=RequestMethod.GET)
 	public @ResponseBody List<Question> questionListRest() {
 		return (List<Question>) repository.findAll();
+	}
+	
+	//RESTful service show all answers
+	@RequestMapping(value="/questions/answers", method=RequestMethod.GET)
+	public @ResponseBody List<Answer> answerListRest() {
+		return (List<Answer>) arepository.findAll();
 	}
 	
 	@RequestMapping(value="questions/{id}", method = RequestMethod.GET)
@@ -40,8 +51,7 @@ public class OhjelmistoproController {
 	public @ResponseBody List<Question> addNewAnswer(@RequestBody Question question){
 		return (List<Question>) repository.save(question);
 	}
-	
-	    
+	   
 	// Delete Question
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
 	public String poistakysymys(@PathVariable("id") Long questionId, Model model) {
