@@ -65,7 +65,15 @@ public class OhjelmistoproController {
     public String lisaaKysymys(Model model){
     	model.addAttribute("question", new Question());
     	return "redirect:../";
-    }   
+    }
+    
+    //Post test
+    @RequestMapping(value="/posttest", method=RequestMethod.GET)
+	public String PostTest(Model model) {
+		model.addAttribute("answer", arepository.findAll());
+		model.addAttribute("question", repository.findAll());
+		return "posttest";
+    }
 
 	 
 }

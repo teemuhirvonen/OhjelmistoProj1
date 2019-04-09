@@ -1,4 +1,4 @@
-<DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -8,6 +8,13 @@
 <title> Post Test </title>
 </head>
 <body>
-
+	<H1>PostTest</H1>
+	<form th:each="question: ${question}" th:action="@{save}" action="#" method="post">
+		<label th:text="*{question.question}"></label>
+	</form>
+	<form th:each="answer: ${answer}" th:action="@{save}" action="#" method="post">
+		<input type="radio" th:text="*{answer.answer}"/>
+	</form>
+	<input type="submit" class="btn btn-success" value="Save"></input>
 </body>
 </html>
