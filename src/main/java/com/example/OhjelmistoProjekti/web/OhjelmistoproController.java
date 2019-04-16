@@ -49,8 +49,14 @@ public class OhjelmistoproController {
 	
 	// Save question POST
 	@RequestMapping(value = "/questions", method=RequestMethod.POST)
-	public @ResponseBody List<Question> addNewAnswer(@RequestBody Question question){
+	public @ResponseBody List<Question> addNewQuestion(@RequestBody Question question){
 		return (List<Question>) repository.save(question);
+	}
+	
+	// Save answer POST
+	@RequestMapping(value = "/answers", method=RequestMethod.POST)
+	public @ResponseBody List<Answer> addNewAnswer(@RequestBody Answer answer){
+		return (List<Answer>) repository.save(answer);
 	}
 	   
 	// Delete Question

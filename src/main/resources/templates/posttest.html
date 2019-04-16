@@ -10,10 +10,10 @@
 <body>
 	<H1>PostTest</H1>
 	<form th:each="question: ${question}" th:action="@{save}" action="#" method="post">
-		<label th:text="*{question.question}"></label>
+		<label th:text="${question.question}"></label>
 	</form>
 	<form th:each="answer: ${answer}" th:action="@{save}" action="#" method="post">
-		<input type="radio" th:text="*{answer.answer}"/>
+		<input type="radio" th:text="${answer.answer}"/>
 	</form>
 	<input type="submit" class="btn btn-success" value="Save"></input>
 </body>
