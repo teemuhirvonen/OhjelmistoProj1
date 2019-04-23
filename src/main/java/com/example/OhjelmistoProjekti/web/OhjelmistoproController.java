@@ -56,7 +56,7 @@ public class OhjelmistoproController {
 	@CrossOrigin
 	public @ResponseBody String addNewAnswer(@RequestBody Answer answer){
 		arepository.save(answer);
-		return "redirect:../questions/answers";
+		return "redirect:./answers";
 	}
 	   
 	// Delete Question
