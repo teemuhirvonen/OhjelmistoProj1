@@ -44,12 +44,6 @@ public class OhjelmistoproController {
 		return (List<Answer>) arepository.findAll();
 	}
 	
-	@RequestMapping(value="questions/{id}", method = RequestMethod.GET)
-	@CrossOrigin
-	public @ResponseBody Optional<Question> findQuestionREST(@PathVariable("id") Long questionid){
-		return repository.findById(questionid);
-	} 
-	
 	// Save question POST
 	@RequestMapping(value = "/questions", method=RequestMethod.POST)
 	@CrossOrigin
@@ -60,8 +54,9 @@ public class OhjelmistoproController {
 	// Save answer POST
 	@RequestMapping(value = "/answers", method=RequestMethod.POST)
 	@CrossOrigin
-	public @ResponseBody List<Answer> addNewAnswer(@RequestBody Answer answer){
-		return (List<Answer>) repository.save(answer);
+	public @ResponseBody String addNewAnswer(@RequestBody Answer answer){
+		arepository.save(answer);
+		return "redirect:../questions/answers";
 	}
 	   
 	// Delete Question
@@ -79,15 +74,5 @@ public class OhjelmistoproController {
     	model.addAttribute("question", new Question());
     	return "redirect:../";
     }
-    
-    //Post test
-    @RequestMapping(value="/posttest", method=RequestMethod.GET)
-    @CrossOrigin
-	public String PostTest(Model model) {
-		model.addAttribute("answer", arepository.findAll());
-		model.addAttribute("question", repository.findAll());
-		return "posttest";
-    }
-
 	 
 }
