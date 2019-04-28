@@ -32,35 +32,36 @@ public class OhjelmistoproController {
 	
 	//RESTful service show all questions
 	@RequestMapping(value="/questions", method=RequestMethod.GET)
+	@CrossOrigin
 	public @ResponseBody List<Question> questionListRest() {
 		return (List<Question>) repository.findAll();
 	}
 	
 	//RESTful service show all answers
 	@RequestMapping(value="/questions/answers", method=RequestMethod.GET)
+	@CrossOrigin
 	public @ResponseBody List<Answer> answerListRest() {
 		return (List<Answer>) arepository.findAll();
 	}
 	
-	@RequestMapping(value="questions/{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Question> findQuestionREST(@PathVariable("id") Long questionid){
-		return repository.findById(questionid);
-	} 
-	
 	// Save question POST
 	@RequestMapping(value = "/questions", method=RequestMethod.POST)
+	@CrossOrigin
 	public @ResponseBody List<Question> addNewQuestion(@RequestBody Question question){
 		return (List<Question>) repository.save(question);
 	}
 	
 	// Save answer POST
 	@RequestMapping(value = "/answers", method=RequestMethod.POST)
-	public @ResponseBody List<Answer> addNewAnswer(@RequestBody Answer answer){
-		return (List<Answer>) repository.save(answer);
+	@CrossOrigin
+	public @ResponseBody String addNewAnswer(@RequestBody Answer answer){
+		arepository.save(answer);
+		return "redirect:./answers";
 	}
 	   
 	// Delete Question
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+	@CrossOrigin
 	public String poistakysymys(@PathVariable("id") Long questionId, Model model) {
 		repository.deleteById(questionId);
 		return "redirect:../";	
@@ -68,18 +69,10 @@ public class OhjelmistoproController {
 	
 	// Add new question 
     @RequestMapping(value = "/add", method=RequestMethod.GET)
+    @CrossOrigin
     public String lisaaKysymys(Model model){
     	model.addAttribute("question", new Question());
     	return "redirect:../";
     }
-    
-    //Post test
-    @RequestMapping(value="/posttest", method=RequestMethod.GET)
-	public String PostTest(Model model) {
-		model.addAttribute("answer", arepository.findAll());
-		model.addAttribute("question", repository.findAll());
-		return "posttest";
-    }
-
 	 
 }
