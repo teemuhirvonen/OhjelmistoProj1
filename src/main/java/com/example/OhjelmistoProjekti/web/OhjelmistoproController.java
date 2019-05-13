@@ -83,6 +83,7 @@ public class OhjelmistoproController {
 	@RequestMapping(value = "/answers", method=RequestMethod.POST)
 	@CrossOrigin
 	public @ResponseBody String addNewAnswer(@RequestBody Answer answer){
+		answer.answerCounter++;
 		arepository.save(answer);
 		return "redirect:./answers";
 	}

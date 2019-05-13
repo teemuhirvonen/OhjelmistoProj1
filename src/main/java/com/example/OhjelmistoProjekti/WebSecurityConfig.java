@@ -23,10 +23,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure (HttpSecurity http) throws Exception {
 		http
 		
-		.authorizeRequests().antMatchers("/css/**", "/signup", "/questions", "/answers", "/questions/answers", "/types", "/types/{id}", "/questions/{id}").permitAll()
+		.authorizeRequests().antMatchers("/css/**", "/signup", "/questions", "/questions/answers", "/types", "/types/{id}", "/questions/{id}").permitAll()
 
 		.and()
 		.authorizeRequests().antMatchers("/h2-console/**").permitAll()
+		.and()
+		.authorizeRequests().antMatchers("/answers**").permitAll()
 
                 .and().csrf().ignoringAntMatchers("/h2-console/**")
 

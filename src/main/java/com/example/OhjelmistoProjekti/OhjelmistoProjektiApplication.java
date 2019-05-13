@@ -47,45 +47,45 @@ public class OhjelmistoProjektiApplication {
 			Question question8 = new Question ("Miten toivoisit työkaluja opetettavan?", "checkbox" ,trepository.findByType("Checkbox").get(0));
 			Question question9 = new Question ("Oletko suorittanut UX/UI suunnittelu kursseja jonkin muun koulun/palvelun kautta?", "radiobutton" ,trepository.findByType("Radiobutton").get(0));
 			
-			Answer answer1 = new Answer("Mies");
-			Answer answer2 = new Answer("Nainen");
-			Answer answer3 = new Answer("Muu");
+			Answer answer1 = new Answer("Mies", 0);
+			Answer answer2 = new Answer("Nainen", 0);
+			Answer answer3 = new Answer("Muu", 0);
 			
-			Answer answer4 = new Answer("1");
-			Answer answer5 = new Answer("2");
-			Answer answer6 = new Answer("3");
-			Answer answer7 = new Answer("4+");
+			Answer answer4 = new Answer("1", 0);
+			Answer answer5 = new Answer("2", 0);
+			Answer answer6 = new Answer("3", 0);
+			Answer answer7 = new Answer("4+", 0);
 			
-			Answer answer8 = new Answer("Ohjelmistotuotanto");
-			Answer answer9 = new Answer("Digipalvelut");
-			Answer answer10 = new Answer("Infrastruktuuri");
-			Answer answer11= new Answer("Liiketoiminta");
+			Answer answer8 = new Answer("Ohjelmistotuotanto", 0);
+			Answer answer9 = new Answer("Digipalvelut", 0);
+			Answer answer10 = new Answer("Infrastruktuuri", 0);
+			Answer answer11= new Answer("Liiketoiminta", 0);
 			
-			Answer answer12 = new Answer("En");
-			Answer answer13 = new Answer("En, mutta olen kiinnostunut oppimaan aiheesta");
-			Answer answer14 = new Answer("Kyllä");
-			Answer answer15 = new Answer("Ehkä");
+			Answer answer12 = new Answer("En", 0);
+			Answer answer13 = new Answer("En, mutta olen kiinnostunut oppimaan aiheesta", 0);
+			Answer answer14 = new Answer("Kyllä", 0);
+			Answer answer15 = new Answer("Ehkä", 0);
 			
-			Answer answer16 = new Answer("Kyllä");
-			Answer answer17 = new Answer("Ehkä");
-			Answer answer18 = new Answer("Ei");
+			Answer answer16 = new Answer("Kyllä", 0);
+			Answer answer17 = new Answer("Ehkä", 0);
+			Answer answer18 = new Answer("Ei", 0);
 			
-			Answer answer19 = new Answer("Marvel App");
-			Answer answer20 = new Answer("inVision");
-			Answer answer21 = new Answer("Photoshop");
-			Answer answer22 = new Answer("Illustrator");
-			Answer answer23 = new Answer("InDesign");
-			Answer answer24 = new Answer("Adobe XD");
-			Answer answer25 = new Answer("En ole käyttänyt");
-			Answer answer26 = new Answer("Jotain muita, mitä?");
-			Answer answer27 = new Answer("En osaa sanoa/En kaipaa opetusta näistä");
+			Answer answer19 = new Answer("Marvel App", 0);
+			Answer answer20 = new Answer("inVision", 0);
+			Answer answer21 = new Answer("Photoshop", 0);
+			Answer answer22 = new Answer("Illustrator", 0);
+			Answer answer23 = new Answer("InDesign", 0);
+			Answer answer24 = new Answer("Adobe XD", 0);
+			Answer answer25 = new Answer("En ole käyttänyt", 0);
+			Answer answer26 = new Answer("Jotain muita, mitä?", 0);
+			Answer answer27 = new Answer("En osaa sanoa/En kaipaa opetusta näistä", 0);
 			
-			Answer answer28 = new Answer("Kurssi aiheesta");
-			Answer answer29 = new Answer("Jonkin muun kurssin sisällä");
-			Answer answer30 = new Answer("Intensiivikurssi");
+			Answer answer28 = new Answer("Kurssi aiheesta", 0);
+			Answer answer29 = new Answer("Jonkin muun kurssin sisällä", 0);
+			Answer answer30 = new Answer("Intensiivikurssi", 0);
 			
-			Answer answer31 = new Answer("Kyllä, minkä?");
-			Answer answer32 = new Answer("En");
+			Answer answer31 = new Answer("Kyllä, minkä?", 0);
+			Answer answer32 = new Answer("En", 0);
 		
 			arepository.save(answer1);
 			arepository.save(answer2);

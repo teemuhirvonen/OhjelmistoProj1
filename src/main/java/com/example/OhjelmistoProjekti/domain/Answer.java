@@ -15,6 +15,7 @@ public class Answer {
 	
 	@Column(name="answer")
 	private String answer;
+	public int answerCounter;
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "answers")    
@@ -22,11 +23,20 @@ public class Answer {
 
 	public Answer(){}
 	
-	public Answer(String answer){
+	public Answer(String answer, int answerCounter){
 		super();
 		this.answer = answer;
+		this.answerCounter = answerCounter;
 	}
 	
+	public int getAnswerCounter() {
+		return answerCounter;
+	}
+
+	public void setAnswerCounter(int answerCounter) {
+		this.answerCounter = answerCounter;
+	}
+
 	public Long getAnswerid() {
 		return answerid;
 	}
