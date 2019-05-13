@@ -9,10 +9,10 @@ public class Type {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long typeid;
-	private String type;
+	public String type;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
-	private List<Question> questions;
+	private List<Question> question;
 	
 	public Type(){}
 	
@@ -37,12 +37,12 @@ public class Type {
 		this.type = type;
 	}
 
-	public List<Question> getQuestions() {
-		return questions;
+	public List<Question> getQuestion() {
+		return question;
 	}
 
-	public void setQuestions(List<Question> questions) {
-		this.questions = questions;
+	public void setQuestion(List<Question> question) {
+		this.question = question;
 	}
 
 	@Override

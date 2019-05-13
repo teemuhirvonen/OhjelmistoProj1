@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Question {
 	public long questionid;
 	private String question;
-	private String questiontype;
 	
 	@Access(AccessType.FIELD)
 	@ManyToOne
@@ -23,9 +22,9 @@ public class Question {
 	
 	public Question() {}
 	
-	public Question(String question, String questiontype, Type type) {
+	public Question(String question, Type type) {
+		super();
 		this.question = question;
-		this.questiontype = questiontype;
 		this.type = type;
 	}
 	
@@ -73,14 +72,6 @@ public class Question {
 			}
 		}
 		return false;
-	}
-
-	public String getQuestiontype() {
-		return questiontype;
-	}
-
-	public void setQuestiontype(String questiontype) {
-		this.questiontype = questiontype;
 	}
 }
 	

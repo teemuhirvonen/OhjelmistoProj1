@@ -46,8 +46,8 @@ public class OhjelmistoproController {
 	//RESTful service to get all questions
 	@RequestMapping(value="/questions", method=RequestMethod.GET)
 	@CrossOrigin
-	public @ResponseBody List<Question> questionListRest() {
-		return (List<Question>) repository.findAll();
+	public @ResponseBody List<Type> questionListRest() {
+		return (List<Type>) trepository.findAll();
 	}
 	
 	//RESTful service to get question by id
@@ -83,7 +83,7 @@ public class OhjelmistoproController {
 	@RequestMapping(value = "/answers", method=RequestMethod.POST)
 	@CrossOrigin
 	public @ResponseBody String addNewAnswer(@RequestBody Answer answer){
-		answer.answerCounter++;
+		answer.answerCounter = + 1;
 		arepository.save(answer);
 		return "redirect:./answers";
 	}

@@ -14,8 +14,8 @@ public class Answer {
 	public Long answerid;
 	
 	@Column(name="answer")
-	private String answer;
-	public int answerCounter;
+	public String answer;
+	public int answerCounter = 0;
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "answers")    
