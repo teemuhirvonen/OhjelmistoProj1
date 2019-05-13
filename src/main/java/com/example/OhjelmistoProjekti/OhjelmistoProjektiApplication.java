@@ -33,19 +33,19 @@ public class OhjelmistoProjektiApplication {
 		return (args) -> {
 			log.info("kokeilu");
 			
-			trepository.save(new Type("Radiobutton"));
-			trepository.save(new Type("Checkbox"));
-			trepository.save(new Type("Text"));
+			trepository.save(new Type("radiobutton"));
+			trepository.save(new Type("checkbox"));
+			trepository.save(new Type("text"));
 		
-			Question question1 = new Question("Sukupuoli?", trepository.findByType("Radiobutton").get(0));
-			Question question2 = new Question("Monetta vuotta opiskelet Haaga-Heliassa?", trepository.findByType("Radiobutton").get(0));
-			Question question3 = new Question ("Mihin koulutusohjelman linjaan suuntaudut?",  trepository.findByType("Radiobutton").get(0));
-			Question question4 = new Question ("Haluaisitko työllistyä UI/UX suunnittelun työtehtäviin?", trepository.findByType("Radiobutton").get(0));
-			Question question5 = new Question ("Onko Haaga-Heliassa mielestäsi tarpeeksi visuaaliseen suunnitteluun ohjaavia kursseja?", trepository.findByType("Radiobutton").get(0));
-			Question question6 = new Question ("Mitä suunnittelutyökaluja olet käyttänyt Haaga-Heliassa?", trepository.findByType("Checkbox").get(0));
-			Question question7 = new Question ("Minkä visuaalisten työkalujen opetusta kaipaisit Haaga-Heliaan?", trepository.findByType("Checkbox").get(0));
-			Question question8 = new Question ("Miten toivoisit työkaluja opetettavan?", trepository.findByType("Checkbox").get(0));
-			Question question9 = new Question ("Oletko suorittanut UX/UI suunnittelu kursseja jonkin muun koulun/palvelun kautta?", trepository.findByType("Radiobutton").get(0));
+			Question question1 = new Question("Sukupuoli?", "radiobutton", trepository.findByType("radiobutton").get(0));
+			Question question2 = new Question("Monetta vuotta opiskelet Haaga-Heliassa?", "radiobutton",trepository.findByType("radiobutton").get(0));
+			Question question3 = new Question ("Mihin koulutusohjelman linjaan suuntaudut?", "radiobutton", trepository.findByType("radiobutton").get(0));
+			Question question4 = new Question ("Haluaisitko työllistyä UI/UX suunnittelun työtehtäviin?", "radiobutton", trepository.findByType("radiobutton").get(0));
+			Question question5 = new Question ("Onko Haaga-Heliassa mielestäsi tarpeeksi visuaaliseen suunnitteluun ohjaavia kursseja?", "radiobutton",trepository.findByType("radiobutton").get(0));
+			Question question6 = new Question ("Mitä suunnittelutyökaluja olet käyttänyt Haaga-Heliassa?", "checkbox", trepository.findByType("checkbox").get(0));
+			Question question7 = new Question ("Minkä visuaalisten työkalujen opetusta kaipaisit Haaga-Heliaan?", "checkbox", trepository.findByType("checkbox").get(0));
+			Question question8 = new Question ("Miten toivoisit työkaluja opetettavan?", "checkbox", trepository.findByType("checkbox").get(0));
+			Question question9 = new Question ("Oletko suorittanut UX/UI suunnittelu kursseja jonkin muun koulun/palvelun kautta?", "radiobutton", trepository.findByType("radiobutton").get(0));
 			
 			Answer answer1 = new Answer("Mies", 0);
 			Answer answer2 = new Answer("Nainen", 0);

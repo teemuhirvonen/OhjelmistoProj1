@@ -10,22 +10,24 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Question {
 	public long questionid;
-	private String question;
+	private String question, questionType;
 	
 	@Access(AccessType.FIELD)
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name="typeid")
-	private Type type = this.getType();
+	private Type type;
 	
 	private Set<Answer> answers = new HashSet<Answer>(0);
 	
 	public Question() {}
 	
-	public Question(String question, Type type) {
+	public Question(String question, String questionType, Type type) {
 		this.question = question;
+		this.setQuestionType(questionType);
 		this.type = type;
 	}
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,6 +54,14 @@ public class Question {
 
 	public void setType(Type type) {
 		this.type = type;
+	}
+	
+	public String getQuestionType() {
+		return questionType;
+	}
+
+	public void setQuestionType(String questionType) {
+		this.questionType = questionType;
 	}
 
 	@ManyToMany(cascade = CascadeType.MERGE)
