@@ -1,20 +1,175 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!doctype html>
+
+<html lang="fi">
+
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<title> Post Test </title>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Kyselylomake</title>
+
+    <meta name="description" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- stylesheetit -->
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+
+    <!-- fontit -->
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Dosis|Fredoka+One" rel="stylesheet">
+
+    <!-- scriptit -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138866877-1"></script>
+
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+
+            dataLayer.push(arguments);
+
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138866877-1');
+
+    </script>
+
 </head>
-<body>
-	<H1>PostTest</H1>
-	<form th:each="question: ${question}" th:action="@{save}" action="#" method="post">
-		<label th:text="${question.question}"></label>
-	</form>
-	<form th:each="answer: ${answer}" th:action="@{save}" action="#" method="post">
-		<input type="radio" th:text="${answer.answer}"/>
-	</form>
-	<input type="submit" class="btn btn-success" value="Save"></input>
+
+<body id="box">
+
+    <script>
+
+        var questions = [];
+
+        $.getJSON("http://ohjelmistoprojekti.herokuapp.com/questions", function (data) {
+
+            var items = [];
+
+            $.each(data, function (key, d) {
+
+                items.push("<br>" + d.question + "<br>");
+
+                items.push("<input type=text id=" + d.questionid + " /><br>");
+
+                questions.push(d.questionid);
+
+            });
+
+            $("#stuff").append(items.join(""));
+
+        });
+
+        function send() {
+
+            for (i = 0; i < questions.length; i++) {
+
+                var vastaus = document.getElementById(questions[i]).value;
+
+                var jsonData = {
+
+                    "questionid": questions[i],
+
+                    "answer": vastaus
+
+                };
+
+                /* stringify-metodia tarvitaan vain alert-funktiota varten. */
+
+                var myJSON = JSON.stringify(jsonData);
+
+               // alert(myJSON);
+
+            
+
+                var settings = {
+
+                    "async": true,
+
+                    "crossDomain": true,
+
+                    "url": "http://ohjelmistoprojekti.herokuapp.com/answers",
+
+                    "method": "POST",
+
+                    "headers": {
+
+                        "content-type": "application/json",
+
+                        "cache-control": "no-cache"
+
+                    },
+
+                    "processData": false,
+
+                    "data": myJSON
+
+                }
+
+                $.ajax(settings).done(function (response) {
+
+                    console.log(response);
+
+                });
+
+                
+
+            }
+
+        }
+
+    </script>
+
+    <section id="heading">
+
+        <h1>Kysely Haaga-Helian suunnittelutyökalujen opetuksesta</h1>
+
+    </section>
+
+        <div id="stuff"></div>
+
+        <button type="submit" class="btn btn-primary mb-2" onClick="send()">Submit</button>
+
 </body>
+
 </html>

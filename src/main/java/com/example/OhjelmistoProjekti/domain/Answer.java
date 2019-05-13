@@ -1,38 +1,32 @@
 package com.example.OhjelmistoProjekti.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import java.util.Set;
+
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Answer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long answerid;
+	
+	@Column(name="answer")
 	private String answer;
 	
-	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="questionid")
-	private Question questionid;
-	
+	@ManyToMany(mappedBy = "answers")    
+    private Set<Question> questions;  
+
 	public Answer(){}
 	
 	public Answer(String answer){
+		super();
 		this.answer = answer;
 	}
 	
-	public Answer(String answer, Question questionid){
-		super();
-		this.answer = answer;
-		this.questionid = questionid;
-	}
-
 	public Long getAnswerid() {
 		return answerid;
 	}
@@ -40,7 +34,7 @@ public class Answer {
 	public void setAnswerid(Long answerid) {
 		this.answerid = answerid;
 	}
-
+	
 	public String getAnswer() {
 		return answer;
 	}
@@ -49,20 +43,17 @@ public class Answer {
 		this.answer = answer;
 	}
 
-	public Question getQuestionid() {
-		return questionid;
+	public Set<Question> getQuestions() {
+		return questions;
 	}
 
-	public void setQuestionid(Question questionid) {
-		this.questionid = questionid;
+	public void setQuestions(Set<Question> questions) {
+		this.questions = questions;
 	}
 
 	@Override
 	public String toString() {
-		return "Answer [answerid=" + answerid + ", answer=" + answer
-				+ ", question=" + questionid + "]";
+		return "Answer [answerid=" + answerid + ", answer=" + answer + "]";
 	}
 	
-	
-
 }

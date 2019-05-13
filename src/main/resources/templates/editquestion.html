@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css"rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+		<h1>Edit Question</h1>
+		<table  class="table table-striped"></table>
+		<div>
+		<form th:object="${question}" th:action="@{../save}" action="#" method="post">
+		<label for="question">Question</label>
+		<input type="text" id="question" th:field="*{question}" />
+		
+		<div style="clear: both; display: block; height: 10px;"></div>
+		
+		<input type="hidden" id="questionid" th:field="*{questionid}" />
+		
+		<div style="clear: both; display: block; height: 10px;"></div>
+		
+		<label for="typelist">Type</label>
+		<select id="typelist" th:field="*{type}" class="form-control">
+			<option th:each="type: ${types}" th:value="${type.typeid}" th:text="${type.type}"></option>			
+		</select>
+		
+		<div style="clear: both; display: block; height: 10px;"></div>
+		
+		<input type="submit" value="Save" class="btn btn-success"></input>
+		</form>
+	</div>
+
+</body>
+</html>
