@@ -46,8 +46,8 @@ public class OhjelmistoproController {
 	//RESTful service to get all questions
 	@RequestMapping(value="/questions", method=RequestMethod.GET)
 	@CrossOrigin
-	public @ResponseBody List<Type> questionListRest() {
-		return (List<Type>) trepository.findAll();
+	public @ResponseBody List<Question> questionListRest() {
+		return (List<Question>) repository.findAll();
 	}
 	
 	//RESTful service to get question by id
@@ -178,9 +178,9 @@ public class OhjelmistoproController {
 	 // Delete Question
  	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
  	@CrossOrigin
- 	public String poistakysymys(@PathVariable("id") Long questionId, Model model) {
+ 	public String poistakysymys(@PathVariable("id") Long questionId) {
  		repository.deleteById(questionId);
- 		return "redirect:questionlist/";	
+ 		return "redirect:/questionlist";	
  	}
 	
     @RequestMapping(value="/login")

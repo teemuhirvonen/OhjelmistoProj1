@@ -16,14 +16,13 @@ public class Question {
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name="typeid")
-	private Type type;
+	private Type type = this.getType();
 	
 	private Set<Answer> answers = new HashSet<Answer>(0);
 	
 	public Question() {}
 	
 	public Question(String question, Type type) {
-		super();
 		this.question = question;
 		this.type = type;
 	}
@@ -72,6 +71,14 @@ public class Question {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public String toString() {
+		if (this.type != null)
+			return "id = " + questionid + "Category =" + this.getType();		
+		else
+			return "]";
 	}
 }
 	
