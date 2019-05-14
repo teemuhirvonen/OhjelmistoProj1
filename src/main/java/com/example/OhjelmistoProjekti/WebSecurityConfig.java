@@ -23,27 +23,55 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure (HttpSecurity http) throws Exception {
 		http
 		
-		.authorizeRequests().antMatchers("/css/**", "/signup", "/questions", "/questions/answers", "/types", "/types/{id}", "/questions/{id}").permitAll()
-
+		.authorizeRequests()
+		.antMatchers("/css/**", "/signup")
+		.permitAll()
 		.and()
-		.authorizeRequests().antMatchers("/h2-console/**").permitAll()
-		.and()
-		.authorizeRequests().antMatchers("/answers/**").permitAll()
-
-                .and().csrf().ignoringAntMatchers("/h2-console/**", "/answers/**")
-
-                .and().headers().frameOptions().sameOrigin()
+		
+		
+		.authorizeRequests()
+        .antMatchers("/questions", "/questions/{id}", "/answers", "/questions/answers", "/answers", "/types", "/types/{id}", "/users", "/users/{id}", "/add", "/edit/{id}", "/delete/{id}", "/save")
+        .hasAuthority("ADMIN")
         .and()
-		.authorizeRequests(). anyRequest().authenticated()
+        
+        .authorizeRequests()
+        .antMatchers("addQuestionAnswer/{id}", "/posttest")
+        .hasAuthority("USER")
+        .and()
+        
+        
+		.authorizeRequests()
+		.antMatchers("/h2-console/**")
+		.permitAll()
+		.and()
+		
+		.authorizeRequests()
+		.antMatchers("/answers/**")
+		.permitAll()
+		.and()
+		
+		.csrf()
+		.ignoringAntMatchers("/h2-console/**", "/answers/**")
+		.and()
+		
+		.headers()
+		.frameOptions()
+		.sameOrigin()
+        .and()
+        
+		.authorizeRequests()
+		.anyRequest()
+		.authenticated()
 		.and()
 		
 		.formLogin()
-			.loginPage("/login")
-			.defaultSuccessUrl("/questionlist")
-			.permitAll()
-			.and()
+		.loginPage("/login")
+		.defaultSuccessUrl("/questionlist")
+		.permitAll()
+		.and()
+		
 		.logout()
-			.permitAll();
+		.permitAll();
 	}
 	
 	@Autowired 

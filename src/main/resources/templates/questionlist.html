@@ -31,8 +31,13 @@
  			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${question.questionid})}"class="btn btn-success">Edit</a></td>    		
     	</tr>
      </table>
-     <a href="/posttest" class="btn btn-success">Click here</a>  
-	 <td sec:authorize="hasAuthority('ADMIN')"><a href="/add" class="btn btn-success">Add Question</a>  
+     <td sec:authorize="hasAuthority('USER')">
+     <a href="/posttest" class="btn btn-success">Click here</a>
+     </td>  
+     
+	 <td sec:authorize="hasAuthority('ADMIN')">
+	 <a href="/add" class="btn btn-success">Add Question</a>
+	 <td>
 </div>  	
 </body>
 </html>

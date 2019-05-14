@@ -180,7 +180,7 @@ public class OhjelmistoproController {
  	@CrossOrigin
  	public String poistakysymys(@PathVariable("id") Long questionId, Model model) {
  		repository.deleteById(questionId);
- 		return "redirect:questionlist/";	
+ 		return "redirect:../questionlist";	
  	}
 	
     @RequestMapping(value="/login")
