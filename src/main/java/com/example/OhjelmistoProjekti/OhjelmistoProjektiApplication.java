@@ -77,14 +77,14 @@ public class OhjelmistoProjektiApplication {
 			Answer answer23 = new Answer("InDesign", 0);
 			Answer answer24 = new Answer("Adobe XD", 0);
 			Answer answer25 = new Answer("En ole käyttänyt", 0);
-			Answer answer26 = new Answer("Jotain muita, mitä?", 0);
+			Answer answer26 = new Answer("Jotain muita", 0);
 			Answer answer27 = new Answer("En osaa sanoa/En kaipaa opetusta näistä", 0);
 			
 			Answer answer28 = new Answer("Kurssi aiheesta", 0);
 			Answer answer29 = new Answer("Jonkin muun kurssin sisällä", 0);
 			Answer answer30 = new Answer("Intensiivikurssi", 0);
 			
-			Answer answer31 = new Answer("Kyllä, minkä?", 0);
+			Answer answer31 = new Answer("Kyllä", 0);
 			Answer answer32 = new Answer("En", 0);
 		
 			arepository.save(answer1);
